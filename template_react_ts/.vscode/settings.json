@@ -1,0 +1,9 @@
+{
+    "vscode.tsc.compiler.alertTSConfigChanges": "never",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "editor.formatOnSave": true,
+    "javascript.format.enable": false,
+    "material-icon-theme.activeIconPack": "react_redux"
+}
