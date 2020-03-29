@@ -1,7 +1,21 @@
 import React from 'react';
 import './App.css';
 import Author from './components/Author';
-//import Authors from './components/Authors';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: green;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: red;
+    color: yellow;
+  }
+`;
 
 interface IAuthor {
   id: string;
@@ -19,10 +33,17 @@ class App extends React.Component<Props, State> {
   }
 
   state: State = {
-    authors: [{ id: '1', name: 'Rany ElHousieny' }, { id: '2', name: 'Omnia Omar' }, { id: '3', name: 'Khalid ElHousieny' }],
-    showAuthors: true,
+    authors: [
+      { id: '1', name: 'Rany ElHousieny' },
+      { id: '2', name: 'Omnia Omar' },
+      { id: '3', name: 'Khalid ElHousieny' },
+    ],
+    showAuthors: false,
   };
 
+  toggleHandler = () => {
+    this.setState({ showAuthors: true });
+  };
   deleteAuthorHandler = (index: number) => {
     const authors = [...this.state.authors];
     authors.splice(index, 1);
@@ -30,7 +51,9 @@ class App extends React.Component<Props, State> {
       authors: authors,
     });
   };
+
   render() {
+    // Adding Style
     console.log('[App.tsx] -- render', this.props, this.state);
     let authors = null;
 
@@ -39,7 +62,11 @@ class App extends React.Component<Props, State> {
       authors = (
         <div>
           {this.state.authors.map((author, index) => (
-            <Author authorId={author.id} authorName={author.name} click={() => this.deleteAuthorHandler(index)} />
+            <Author
+              authorId={author.id}
+              authorName={author.name}
+              click={() => this.deleteAuthorHandler(index)}
+            />
           ))}
         </div>
       );
@@ -59,6 +86,7 @@ class App extends React.Component<Props, State> {
     return (
       <div className="App">
         <p className={classes.join(' ')}>List of Authors</p>
+        <StyledButton onClick={this.toggleHandler}>toggle authors</StyledButton>
         {authors}
       </div>
     );

@@ -6,4 +6,5 @@
     "editor.formatOnSave": true,
     "javascript.format.enable": false,
     "material-icon-theme.activeIconPack": "react_redux"
+    "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib/"
 }
